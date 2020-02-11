@@ -405,7 +405,9 @@ WebViewJavascriptBridge.callHandler(
   recentContacts?: 0x00 | 0x01 | 0x02 | 0x04 | 0x08 | 0xff,
   type: 'single' | 'multiple',              // 选择模式， multiple为多选模式
   // 新增(since 1.5) 扩展字段, 用于支持选择自定义结构
-  items: SelectableItem[]
+  items?: SelectableItem[],
+  // 只显示自定义组
+  onlyShowItems?: boolean
 }
 
 /* 类型定义*/
@@ -849,9 +851,10 @@ interface SelectableItem {
   // 0x02 表示显示最近联系人
   // 0x04 表示显示动态通讯录
   // 0x08 表示群
+  // 0x10 表示自定义组(适用于一键通知)
   // 0xff 表示全部显示
   // 可以通过二进程操作符来合并需要展示的类型
-  contactsSupport?:  0x00 | 0x01 | 0x02 | 0x04 | 0x08 | 0xff,
+  contactsSupport?:  0x00 | 0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0xff,
 }
 ```
 
@@ -1433,5 +1436,6 @@ JSSDK 状态对于每一个页面都应该是私有的，状态清理是最简�
   - selectSession, openContact 返回值新增 order 字段
   - selectSession 新增 contactsSupport
   - openContact 进入废弃阶段
+  - openContact 新增 onlyShowItems
 
 [⬆ 返回顶部](#gzb-jssdk-接口协议)

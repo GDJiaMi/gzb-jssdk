@@ -285,6 +285,10 @@ export interface SelectContactParams {
    * 最近联系人控制
    */
   recentContacts?: RecentContactsController
+  /**
+   * 只显示自定义组
+   */
+  onlyShowItems?: boolean
 }
 
 /**

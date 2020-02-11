@@ -325,6 +325,8 @@ export default abstract class Api extends EventEmitter {
       unselect = true,
       limit = 10000,
       user,
+      // @ts-ignore
+      onlyShowItems,
       ...other,
     } = params
     const sessionType: SessionType = 'user'
